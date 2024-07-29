@@ -1,0 +1,82 @@
+Q. Hashmap vs Hashtable. ->( both are implemented classes of Map interface.
+-->
+        Hashmap                                      Hashtable
+
+ 1. uses hashtable internally .                   1.  -//-
+ 2. stores data as key/value pairs                2.  -//-
+ 3. No thread safety                              3.  Thread safety is achieved here.
+    Multiple threads can access and modify a          Multiple threads can access and modify a Hashtable
+    HashMap concurrently without proper               concurrently without causing data inconsistency.
+    synchronization, which can lead to
+    inconsistent data.
+ 4. because it dont use synch,                    4.  it uses synch , so it gives poor performance
+    it will give better performance
+ 5. implements map interface .                    5. -//-
+ 6. Suitable for: Non-threaded applications       6.Suitable for: Threaded applications where thread safety is required.
+    or single threaded apps or
+    scenarios where synchronization
+    is not a concern.
+ 7. introduced in "1.2" when collections framwork   7. Introduced in Java "1.0", Hashtable is considered a "legacy class".
+    got introduced
+
+Q. methods of Hashtable /Hashmap.
+
+--> put(k ,v)
+    get(key)
+    values()
+    KeySet()
+    size()
+    containsKey(key)
+    containsValue(value)
+    hashcode
+    isEmpty()
+
+Q. Default capacity and load factor of hashtable .
+-->
+   default initial capacity (11) and load factor (0.75).
+
+Q. What factors can affect the performance of a HashMap? How can performance be optimized?
+-->
+
+Factors Affecting Performance :-
+i)Load Factor: Higher load factors increase the chance of collisions, affecting performance.
+ii)Capacity: Insufficient capacity can lead to frequent resizing, impacting performance.
+iii)Hash Function Quality: Poor hash functions can lead to more collisions and degrade performance.
+
+Performance Optimization /solutions:-
+i)Choose an Appropriate Load Factor: Default is 0.75; adjust based on application needs.
+ii)Set Initial Capacity: Avoid frequent resizing by initializing with a size close to the expected number of entries.
+iii)Improve Hash Function: Ensure the hash function distributes keys evenly to minimize collisions.
+    can create our own hashfunction by overriding the hashcode() and equals() method .
+
+Q. How do equals and hashCode methods affect the behavior of a HashMap?
+   Why is it important to override both equals and hashCode in a class used as a key in a HashMap?
+-->
+In Java, HashMap relies on both equals and hashCode methods to manage and access entries efficiently. Here’s how these methods affect the behavior:
+
+Hash Code Calculation:
+
+i)When you put an entry into a HashMap, the hashCode() method of the key object is called to compute a hash value. This hash value is then used to determine the index in the hash table (array) where the entry should be placed.
+Indexing and Bucket Allocation:
+
+ii)The computed hash value helps in determining the bucket index where the key-value pair is stored. This minimizes the chance of collisions by distributing entries uniformly across the hash table.
+Handling Collisions:
+
+iii)If multiple keys have the same hash value (a collision), HashMap stores them in a linked list or a balanced tree (since Java 8) at the same bucket index.
+When you retrieve or remove an entry, HashMap first uses the hashCode() method to find the correct bucket and then uses the equals() method to find the exact key within the bucket.
+
+***Importance of Overriding Both equals and hashCode
+A)Consistency:
+
+Equal objects must have the same hash code to ensure they are placed in the same bucket.
+
+B)Correct Behavior:
+
+Without overriding both, HashMap may not find or store keys correctly.
+Proper overrides prevent bugs like key mismatch and ensure efficient retrieval.
+
+hashCode(): Determines bucket location.
+equals(): Ensures correct key match within the bucket.
+Override both: Ensures correct and efficient behavior of HashMap
+
+example --> Person.Main ,Person2,Main2
