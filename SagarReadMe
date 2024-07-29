@@ -1,0 +1,28 @@
+Collections and Collectors
+Collection is an interface in the Java Collections Framework.
+Collections is a utility class in the java.util package.
+
+
+                                    List
+
+        ArrayList                  LinkedList                    Vector
+ 1.ordered                        1.ordered                     1.ordered
+ 2.duplicate                      2.duplicate                   2.duplicate
+ 3.indexed                        3.indexed                     3.indexed
+ 4.not thread safe                4.not thread safe             4-thread safe
+ 5.Uses Dynamic Array Impl        5-Uses Doubly Linked List     5.Uses Dynamic Array Impl
+ 6.Manipulation slower            6.Manipulation is faster
+ 7.Searching is faster            7.Searching is slower
+ 8.less memory                    8.more memory
+
+
+
+                                   Set
+
+       HashSet                     LinkedHashSet                  TreeSet
+   1.no insertion order           1.insertion order              1.no insertion order
+   2.no duplicates                2.no duplicates                2.no duplicates
+   3.unsorted                     3.unsorted                     3.sorted
+   4.searching faster             4.searching slower             4.slower
+   5.Uses Hash Table              5.Uses Hash Table              5.Uses TreeSet
+   6.Allow Heterogeneous          6.Allow Heterogeneous          6.Allow Homogeneous
