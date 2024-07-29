@@ -1,0 +1,69 @@
+Collections and Collectors
+Collection is an interface in the Java Collections Framework.
+Collections is a utility class in the java.util package.
+
+
+                                    List
+
+        ArrayList                  LinkedList                    Vector
+ 1.ordered                        1.ordered                     1.ordered
+ 2.duplicate                      2.duplicate                   2.duplicate
+ 3.indexed                        3.indexed                     3.indexed
+ 4.not thread safe                4.not thread safe             4-thread safe
+ 5.Uses Dynamic Array Impl        5-Uses Doubly Linked List     5.Uses Dynamic Array Impl
+ 6.Manipulation slower            6.Manipulation is faster
+ 7.Searching is faster            7.Searching is slower
+ 8.less memory                    8.more memory
+
+use Cases - ArrayList  - When there is infrequent transactions.
+            LinkedList - When you have frequent insertions and deletions
+
+
+                                   Set
+
+       HashSet                     LinkedHashSet                  TreeSet
+   1.no insertion order           1.insertion order              1.no insertion order
+   2.no duplicates                2.no duplicates                2.no duplicates
+   3.unsorted                     3.unsorted                     3.sorted
+   4.searching faster             4.searching slower             4.slower
+   5.Uses Hash Table              5.Uses Hash Table              5.Uses TreeSet
+   6.Allow Heterogeneous          6.Allow Heterogeneous          6.Allow Homogeneous
+
+Use Cases - HashSet -  Order of elements is not important.
+            LinkedHashSet - Order of elements is important.
+
+
+                                Map
+
+                             HashMap Vs ConcurrentHashMap
+
+   Hash Map -
+     -multiple threads access and modify the map concurrently.
+     -HashMap generally provides better performance than ConcurrentHashMap in single-threaded
+             scenarios due to the absence of synchronization overhead.
+     -HashMap allows one null key and multiple null values.
+
+   Concurrent Hash Map -
+      -ConcurrentHashMap is thread-safe. It is specifically designed to handle concurrent
+       access by multiple threads.
+      -ConcurrentHashMap may have slightly higher overhead compared to HashMap due to its thread safety features
+      -Concurrent  Hash Map does not allow null key and null values
+
+
+Question - Try with Resource Block
+       - The try-with-resources statement in Java is a feature introduced in Java 7 that
+         simplifies the management of resources such as file streams.
+       -  It ensures that each resource is closed at the end of the statement.
+       - That resource must be implemented autoCloseable interface.
+
+       -  try (BufferedReader reader = new BufferedReader(new FileReader("test.txt"))) {//Resource
+                     String line;
+                     while ((line = reader.readLine()) != null) {
+                         System.out.println(line);
+                     }
+                 } catch (IOException e) {
+                     e.printStackTrace();
+                 }
+
+       -You can multiple resources and separating ";" after given resource.
+       - It leads to cleaner, more readable, and less error-prone code.

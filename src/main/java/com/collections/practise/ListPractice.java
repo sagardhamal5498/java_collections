@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Vector;
 
-public class BB {
+public class ListPractice {
 
     public static void main(String[] args) {
 
