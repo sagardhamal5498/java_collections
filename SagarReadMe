@@ -47,6 +47,23 @@ Use Cases - HashSet -  Order of elements is not important.
       -ConcurrentHashMap is thread-safe. It is specifically designed to handle concurrent
        access by multiple threads.
       -ConcurrentHashMap may have slightly higher overhead compared to HashMap due to its thread safety features
-      -Concurrent Hash Map does not allow null key and null values
+      -Concurrent  Hash Map does not allow null key and null values
 
 
+Question - Try with Resource Block
+       - The try-with-resources statement in Java is a feature introduced in Java 7 that
+         simplifies the management of resources such as file streams.
+       -  It ensures that each resource is closed at the end of the statement.
+       - That resource must be implemented autoCloseable interface.
+
+       -  try (BufferedReader reader = new BufferedReader(new FileReader("test.txt"))) {//Resource
+                     String line;
+                     while ((line = reader.readLine()) != null) {
+                         System.out.println(line);
+                     }
+                 } catch (IOException e) {
+                     e.printStackTrace();
+                 }
+
+       -You can multiple resources and separating ";" after given resource.
+       - It leads to cleaner, more readable, and less error-prone code.
