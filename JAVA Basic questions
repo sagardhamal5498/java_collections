@@ -1,0 +1,60 @@
+
+Q1. What do you mean by JIT?
+-->
+JIT stands for Just-in-Time compiler and is a part of JRE(Java Runtime Environment).
+It is used for better performance of the Java applications during run-time.
+The step-by-step working process of JIT is mentioned below:
+
+i)Source code is compiled with Javac compiler to form bytecode
+ii)Bytecode is further passed on to JVM. The .class files are loaded at run time by JVM and with the help of an interpreter,
+    these are converted to machine-understandable code.
+iii)JIT is a part of JVM. When the JIT compiler is enabled, the JVM analyzes the method calls in the .class files and compiles them to get more efficient and native machine code at run time.
+    It also ensures that the prioritized method calls are optimized.
+iv)The JVM then executes the optimized code directly instead of interpreting it again, which increases the performance and speed of the execution.
+
+
+Q2. what are classloader ?  LOAD(classes & interfaces) --> JVM
+-->
+Java Classloader is the program of JRE (Java Runtime Environment).
+The task of ClassLoader is to dynamically load the required Java classes and interfaces to the JVM during the execution of the bytecode.
+Because of classloaders, the Java run time system does not need to know about files and file systems.
+
+Q3. What is a Class Variable?
+-->
+Class variables also known as static variable are declared with the static keyword in a class, but outside a method, constructor or a block.
+There would only be one copy of each class variable per class, regardless of how many objects are created from it.
+
+Q4. do constructors can be inherited or not in java
+-->
+No,
+-   constructors cannot be inherited in Java. Inheritance in Java allows a subclass to inherit fields and methods from its superclass
+   , but constructors are not inherited because they are not members of the class.
+-   However, a subclass can call the superclass's constructor using the super() keyword, which must be the first line in the subclass constructor.
+     This allows the subclass to initialize the superclass part of the object.
+
+Q5. where does heap and stack memory located?
+-->
+RAM memory
+
+Q6 .types of variables ?
+-->
+
+1.local        :- Lvariables are created within a method and should be accessed within a particular method.
+2.static       :- declared outside the main method but inside the class by using static keyword.. Globally accessible in same class.
+3.non static   :- Object creation is mandatory to access the nsv.
+4.ref          :-
+
+Q7. Constructor chaining?
+-->
+objects created in the constructor can be used to call the other constructor by using this() or by creating new object into it.
+
+Q8. Question: What is constructor chaining? How can you implement it within the same class and across different classes?
+Answer:
+       Constructor chaining is calling one constructor from another constructor within the same class using this() or calling a superclass constructor using super().
+       It ensures proper initialization of an object.
+
+Q9 .Can this keyword be used in static methods? Why or why not?
+-->
+ No, this cannot be used in static methods because this refers to an instance of the class
+     , and static methods do not belong to any instance—they belong to the class itself.
+
