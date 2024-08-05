@@ -1,0 +1,35 @@
+Little Things To Know Before Interview
+
+
+1- In java constructors can never inherited but we can call from child class using super keyword.
+
+2- Class variables - static variable declared in class referred as class variables.
+
+3- Stack Memory - It stores program and and after execution it removes LIFO pattern.
+
+4- Heap Memory - It stores objects and after execution it eligible for garbage  collection.
+
+5-Local variables must have to initialized or else it gives runtime error.
+
+6-Static Variables - Not mandatory to initialize static members and have global access.
+
+7-Non static or instance variables - It belongs to object and not mandatory to initialize.
+
+8-Reference Variables -  ref variables can store only null value and object address.
+
+9-Constructor - 1-same name as that of class and called when object is created.
+                2-constructor chaining can call  constructor  from another constructor.
+                3-constructor can have more than one constructor in same differentiated based on type and no arguments.
+                4-java does not support copy constructor.
+                5-Constructors can't be inherited in Java because they are specific to the class they initialize,
+                  and allowing inheritance would break encapsulation and the principle of each class defining its own object initialization.
+                 Instead, a subclass can call a superclass's constructor using super().
+
+
+10-This keyword - 1-Refers to current object execution.
+                  2-Can call another constructor using this() and must be first statement in that constructor.
+                  3-Can not used inside static context but can accCoess static members but should not be performed.
+
+
+11-Super Keyword - 1-Can access parent class methods,constructors and variables.
+                   2-Super keyword can't be used in static context.
