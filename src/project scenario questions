@@ -1,0 +1,95 @@
+
+**Roles and responsibilities in project?
+-->
+i) understanding requirement documents
+ii)understanding ER diagrams
+iii) based on er diagram developed entity classes with proper mapping
+iv) developed controller layer, repository layer, service layer
+v) followed mvc architecture while developing the application.
+v) defects communicated by tester in which i was responsible for fixing that bugs using git and github.
+vi) 3rd party API integration like whatsapp ,email,sms.
+
+** what are security roles in your project?
+-->
+admin, property manager,user, owner .
+
+
+Q1. how many members were there in your team?
+-->
+6 members :---------->
+frontend  :- 2 members
+developers:- 2 developer
+project manager:- 1
+testing    :-1 member
+
+Q2.defect in project ?
+-->
+
+A) Double Booking Issue
+Defect:
+Due to concurrency issues, multiple users booking the same room at the same time resulted in data inconsistencies.
+This occurred due to improper handling of concurrent transactions.
+Solution:
+I implemented optimistic locking using the @Version annotation in Hibernate
+to ensure that each room's availability was checked and updated atomically, preventing double bookings.
+
+B) Defect: Multiple Reviews Submission
+  Description: The system allowed users to submit multiple reviews for the same hotel, leading to spam and fake reviews.
+  Solution: Added validation to ensure that each user could only submit one review per booking.
+  ( in review repository , findbyUserandProperty() )
+
+C) Defect: JWT Expiry Not Handled Properly
+Issue: Users might encounter issues where their JWT tokens expire unexpectedly, leading to abrupt logouts.
+Solution: Implement a token refresh mechanism to automatically issue a new JWT when the current one is about to expire. Ensure secure storage of refresh tokens, possibly using HttpOnly cookies.
+
+ AA) - To offer concessions or discounts to a user who books the same hotel repeatedly,
+   you can implement a loyalty system that recognizes
+          repeat bookings and provides specific rewards or discounts.
+
+
+Q3. which java 8 features used into project?
+-->
+"stream api" for mapping list of entities into dtos .
+"optional class" for checking the if the particular object is available or not while using the search query; basically used to avoid NullpointerException
+eg:-  findByUser() ,findByProperty(), ...
+
+
+Q4. How did you implement user authentication and authorization using Spring Security in your hotel booking application?
+-->
+I implemented user authentication and authorization using Spring Security.
+For authentication, I used a custom UserDetailsService to load user data from the database,
+and for authorization, I defined roles and permissions in the security configuration.
+like user has authorization with which endpoints/apis and propertymanager has which access as he has the right to add the properties .
+
+Q5. Can you explain how JWT tokens are integrated into your application for stateless authentication in Spring Boot?
+-->
+ I integrated JWT (JSON Web Token) for stateless authentication.
+ When a user logs in, a JWT is generated and sent back to the client.
+ This token is then included in subsequent HTTP requests' headers, allowing the server to validate the user’s identity without needing to access the database on every request.
+ The token is verified using a secret key configured in the application.
+
+Q6. How did you design and implement the REST API for hotel search and booking using Spring Boot and Hibernate?
+-->
+I designed the REST API using Spring Boot, with endpoints that allowed users to search for hotels and make bookings.
+firstly i used to handle the http requests coming from the user for searching the hotels as i have written the jpql query for
+searching the hotels like searchByCityOrCountry() name and return the list of hotels in that particular location.
+
+once the user selects one particular hotel then he need to select the date and add the no.of guests & based on these details
+price will get calculated and user needs to enter the details and once he paid the fees booking will be done successfully.
+booked details will get saved and these details will be shared to the user by sms.
+
+Q7 . How did you use ER diagrams in the design and development of your Spring Boot application?
+     Can you provide an example of an ER diagram you created, and explain how it guided your implementation in Spring Boot and Hibernate?
+     How did ER diagrams help in understanding and managing relationships between entities in your application?
+-->
+ER diagrams were used to design the database schema before writing the backend code.
+They helped visualize relationships between entities like Hotel, Room, User, and Review.
+This visualization ensured that the database was normalized and that relationships were correctly mapped using Hibernate annotations
+such as @OneToMany, @ManyToOne, and @ManyToMany
+eg:- one user can give multiple reviews so i used @OneToMany annotation , one property can have multiple rooms so used @OneToMany
+
+ER diagrams were crucial in identifying the types of relationships (e.g., one-to-many, many-to-many)
+and deciding how they would be implemented in the database.
+
+
+

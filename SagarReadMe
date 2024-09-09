@@ -32,10 +32,9 @@ use Cases - ArrayList  - When there is infrequent transactions.
 Use Cases - HashSet -  Order of elements is not important.
             LinkedHashSet - Order of elements is important.
 
-
                                 Map
 
-                             HashMap Vs ConcurrentHashMap
+                        HashMap Vs ConcurrentHashMap
 
    Hash Map -
      -multiple threads access and modify the map concurrently.

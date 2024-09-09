@@ -12,8 +12,10 @@ public class Main {
         Map<Person, String> map = new HashMap<>();
         map.put(person1, "Alice's data");
 
+        System.out.println(map.get(person1));
+
         // Trying to retrieve using an equivalent key
-        String data = map.get(person2); // This will return null because person2 is not found
-        System.out.println(data);
+//        String data = map.get(person2); // This will return null because person2 is not found
+//        System.out.println(data);
     }
 }

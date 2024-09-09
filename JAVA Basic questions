@@ -1,4 +1,7 @@
 
+current version of java:-
+java 22
+
 Q1. What do you mean by JIT?
 -->
 JIT stands for Just-in-Time compiler and is a part of JRE(Java Runtime Environment).
@@ -57,4 +60,170 @@ Q9 .Can this keyword be used in static methods? Why or why not?
 -->
  No, this cannot be used in static methods because this refers to an instance of the class
      , and static methods do not belong to any instance—they belong to the class itself.
+
+Q10. primitive data types in java?
+-->
+char,byte,short,int,float,double,long
+
+Q11. non primitive data type in java?
+-->
+arrays,class, interface, enum,Strings.
+
+Q.12 Types of functional interfaces ?
+-->
+i) consumer :
+  The Consumer functional interface in Java is a key part of the java.util.function package.
+  It represents an operation that takes a single input argument and returns no result.
+  Method :-- void accept(T t);
+  Usage  :-  forEach() ,peek()  ,,,peek method is often used for debugging purposes
+ii)supplier :
+  It represents a supplier of results, meaning it can provide an output without needing any input.
+  Method :- get()
+  usage  :- generate()
+iii)function :
+    Method:-- map(),flatMap(),Collectors.toMap(), Collectors.mapping()
+    flatmap,... Transforms each element into a stream of new values and flattens these streams into a single stream.
+iv)Predicate:-
+   method:-  filter()
+
+Q.13 Date and Time apis in java difference before java 8 and after java 8.
+-->
+Old API:
+Mutable: The Date object can be changed after it's created.
+Complexity: We have to use both Date and Calendar to perform operations like adding days.
+Less Readable: The code involves more steps and is harder to follow.
+
+New API:
+Immutable: The LocalDateTime object is immutable, so it cannot be changed once it's created.
+Simple and Readable: Adding days is straightforward using plusDays(), and the code is easier to understand.
+The new API is thread-safe, making it safe to use in multi-threaded applications.
+
+eg:- getting the current date and time, and then adding 5 days to it.
+
+        Date date= new Date();
+		System.out.println(date);
+
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
+		cal.add(cal.DAY_OF_MONTH, 5);
+		Date futureDate = cal.getTime();
+		System.out.println(futureDate);             //required this much of code
+
+//		New one-->
+		LocalDateTime now = LocalDateTime.now();
+		LocalDateTime future = now.plusDays(5);
+		System.out.println(future);
+
+Q.14 . in which package LocalDate present & also Date is present in which package?
+-->
+import java.time.LocalDate;
+
+import java.util.Date;
+
+Q15. methods in LocalDate?
+-->
+ isLeapYear() ,isAfter(LocalDate other) ,isBefore(LocalDate other) ,of(int year, int month, int dayOfMonth) :creates instance of LocalDate
+ plusDays(long daysToAdd) , minusDays(long daysToSubtract)
+
+Q. where we need to use complete methods in interface?
+-->
+interfaces can store complete methods inside private,static and default keyword .
+
+Q16. serialization and deserialization . (in microservice)
+-->
+A controller method might automatically serialize a Java object to JSON when sending a response:
+
+@GetMapping("/user/{id}")
+public User getUser(@PathVariable Long id) {
+    return userService.findById(id); // Automatically serialized to JSON
+}
+
+When receiving a request, the framework deserializes the JSON payload into a Java object:
+
+@PostMapping("/user")
+public void createUser(@RequestBody User user) {
+    userService.save(user); // User object is deserialized from JSON
+}
+
+Q 17 .thread executor.
+-->
+ExecutorService is used to manage the execution of tasks in a multithreaded environment,
+making it easier to work with threads by providing a higher-level API for task execution, scheduling, and resource management.
+
+Q 18. Inter-Thread Communication
+-->
+wait(), notify(), and notifyAll():
+These methods are used for communication between threads that share a common resource.
+A thread can call wait() to pause its execution until another thread calls notify() or notifyAll() on the same object.
+
+Q 19. wrapper class methods.
+-->
+static methods :- MAX_VALUE, SIZE (will be in bits), parseInt(i) ,toBinaryString(i) ,...
+non            :- longValue() ,floatValue() ,...
+
+Q20 .object class methods.
+-->
+wait(), notify(), toString() ,clone() ,equals(Object obj) ,hashCode()
+
+Q21. finalize .
+-->
+deprecated in java 9 and fully removed from java in java18
+alternative :- try with resources to perform close operations.
+
+Q22. why java is not 100 percent object oriented language
+-->
+bcoz for accessing static members we are not creating objects ,and another reason will be primitive data types .
+for fully object oriented all the operations should happen with the creation of objects only.
+
+Q23. cloning .
+-->
+creating replica of object .
+With cloned objects, you can perform operations like modifying the state of the clone without affecting the original object, testing changes in an isolated environment, or passing the clone to different methods to avoid unintended side effects. Cloning is particularly useful when you need a separate instance that mirrors the original but can be independently altered.
+
+Q.. current versions of springboot:-
+-->
+3.4
+Spring Boot 1.x
+
+1.0.0.RELEASE: April 2014
+1.1.x - 1.5.x: Released between 2014 and 2017, with 1.5.22 being the last 1.x release (July 2019).
+End of Life: Spring Boot 1.x reached its end of life in August 2019.
+Spring Boot 2.x
+
+2.0.0.RELEASE: March 2018
+2.1.x - 2.7.x: Released between 2018 and 2022.
+2.7.x: Last minor version in the 2.x series (May 2022). The 2.x branch continues to receive maintenance updates.
+End of Life: Spring Boot 2.x is still under maintenance but is considered legacy as the focus shifts to 3.x.
+*Spring Boot 2.x was built on top of Spring Framework 5.x.
+
+3.0.0.RELEASE: November 2022
+3.1.x - 3.4.x: Released between 2023 and 2024, with continued active development.
+3.5.x and Beyond: Spring Boot 3.x is actively being developed, with new versions expected to follow.
+*Requires Java 17+ (LTS).
+*Fully supports Spring Framework 6.x.
+
+Spring Boot 2.x -> Spring Framework 5.x.
+Spring Boot 3.x -> Spring Framework 6.x.
+
+
+Q. csrf and cors?
+CSRF (Cross-Site Request Forgery)
+What it is: CSRF is an attack where a malicious website tricks a user into making unintended requests to another site where they're already authenticated (like their banking site).
+Example: Imagine you're logged into your bank's website. If you visit a malicious site, it could secretly send a request to your bank (using your logged-in session) to transfer money, without you realizing it.
+Why we disable it: In many APIs (especially stateless ones), we use tokens like JWT instead of relying on sessions, so CSRF isn't a big risk. That's why it's often disabled in APIs.
+CORS (Cross-Origin Resource Sharing)
+What it is: CORS is a security feature in web browsers that prevents websites from making requests to a different domain (or origin) unless the server allows it.
+Example: If your website (myapp.com) tries to make a request to another domain (like api.othersite.com), the browser checks if api.othersite.com allows requests from myapp.com. If not, the browser blocks the request.
+Why we disable it: In some cases, we may handle this restriction elsewhere, or we may want to allow requests from any origin, especially in APIs that are used by different front-end clients.
+In short:
+
+CSRF prevents malicious sites from tricking users into sending unwanted requests.
+CORS controls which websites can make requests to your server.
+
+
+
+
+
+
+
 
