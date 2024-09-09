@@ -17,23 +17,54 @@ public class MapExample {
         courses.put("PHP",2414);
 
 
-        System.out.println(courses);
+//        System.out.println(courses);
+
+        courses.forEach((x,y)->System.out.println("key-->" +x + " ; value --> "+ y ));
 
 //        courses.forEach((e1,e2)->{
 //            System.out.println(e1+"=>"+e2);
 //        });
 
-        courses.forEach((key,value)->{
-            System.out.print(key);
-            System.out.print("=>");
-            System.out.println(value);
-            System.out.println();
-        });
+//        courses.forEach((key,value)->{
+//            System.out.print(key);
+//            System.out.print("=>");
+//            System.out.println(value);
+//            System.out.println();
+//        });
 
         //entry set
         //key set
 
         System.out.println(courses.get("Core Java"));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     }
 }
