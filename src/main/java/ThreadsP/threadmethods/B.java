@@ -18,7 +18,8 @@ public class B extends Thread{
 
         Thread thread = Thread.currentThread();
         System.out.println(thread.getName());
-
         b1.start();
+
+
     }
 }

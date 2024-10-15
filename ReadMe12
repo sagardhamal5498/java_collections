@@ -16,8 +16,19 @@ Q. Hashmap vs Hashtable. ->( both are implemented classes of Map interface.
     or single threaded apps or
     scenarios where synchronization
     is not a concern.
- 7. introduced in "1.2" when collections framwork   7. Introduced in Java "1.0", Hashtable is considered a "legacy class".
+ 7. introduced in "1.2" when collections framwork  7. Introduced in Java "1.0", Hashtable is considered a "legacy class".
     got introduced
+
+Q. HashMap vs LinkedHashMap vs TreeMap .
+-->
+HM  --> No  Insertion order of keys,     No  Sorting    ,  No thread safety  , 1 Null key Multiple Null values
+LHM --> Yes Insertion order        ,     --//--         ,  --//--            ,  --//--
+TM  --> No                         ,     Yes Sorting    ,  --//--            , No null keys
+
+summary :-
+HashMap      : Fast , no ordering.
+LinkedHashMap: Slightly slower than HashMap, maintains insertion or access order.
+TreeMap      : Sorted order,  slower than HashMap and LinkedHashMap, no null keys.
 
 Q. methods of Hashtable /Hashmap.
 

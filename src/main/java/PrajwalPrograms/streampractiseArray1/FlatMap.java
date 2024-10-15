@@ -10,7 +10,12 @@ public class FlatMap {
 
         int[][] data = {{1, 2, 3}, {4, 5}, {6, 7, 8}};
 
-        List<Integer> collect = Arrays.stream(data).flatMapToInt(x -> Arrays.stream(x)).boxed().collect(Collectors.toList());
-        System.out.println(collect);
+
+        List<Integer> list = Arrays.stream(data).flatMap(x -> Arrays.stream(x).boxed()).toList();
+        System.out.println(list);
+
+
+//        List<Integer> collect = Arrays.stream(data).flatMapToInt(x -> Arrays.stream(x)).boxed().collect(Collectors.toList());
+//        System.out.println(collect);
     }
 }

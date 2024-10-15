@@ -79,7 +79,7 @@ i) consumer :
 ii)supplier :
   It represents a supplier of results, meaning it can provide an output without needing any input.
   Method :- get()
-  usage  :- generate()
+  usage  :- generate() ,findAny().orElseGet(supplier) ,findById(id).orElseThrow(),findById(id).orElseGet()
 iii)function :
     Method:-- map(),flatMap(),Collectors.toMap(), Collectors.mapping()
     flatmap,... Transforms each element into a stream of new values and flattens these streams into a single stream.
@@ -180,6 +180,21 @@ Q23. cloning .
 creating replica of object .
 With cloned objects, you can perform operations like modifying the state of the clone without affecting the original object, testing changes in an isolated environment, or passing the clone to different methods to avoid unintended side effects. Cloning is particularly useful when you need a separate instance that mirrors the original but can be independently altered.
 
+Q24. why we override equals and hashcode methods.
+-->
+To avoid adding duplicate data
+
+What happens if we don't override hashCode()?
+If you don’t override hashCode(), even if two objects are "equal," they might not work correctly in collections like HashMap or HashSet. You could end up with duplicates or missing data.
+
+Why override equals()?
+We override equals() to check if two objects are the same based on their values, not just their memory address.
+
+
+Why override hashCode()?
+We override hashCode() so that objects that are considered equal by equals() have the same code and can work correctly in collections like HashMap or HashSet.
+if we dont do this then hashcode will be different for same object and will get stored in some other bucket.
+
 Q.. current versions of springboot:-
 -->
 3.4
@@ -205,6 +220,10 @@ End of Life: Spring Boot 2.x is still under maintenance but is considered legacy
 Spring Boot 2.x -> Spring Framework 5.x.
 Spring Boot 3.x -> Spring Framework 6.x.
 
+Q. difference between 2 vs 3 version of springboot?
+-->
+
+
 
 Q. csrf and cors?
 CSRF (Cross-Site Request Forgery)
@@ -219,6 +238,183 @@ In short:
 
 CSRF prevents malicious sites from tricking users into sending unwanted requests.
 CORS controls which websites can make requests to your server.
+
+Q. in how many ways we can iterate/traverse over any list,set,...?
+-->
+eg:-
+ArrayList<String> names = new ArrayList<String>();
+        names.add("Durgesh");
+        names.add("Sitara");
+        names.add("Roshni");
+        names.add("Vandna");
+        names.add("Vandna");
+        names.add("ABC");
+
+solution:-- we can iterate in so many ways like :-
+     1. Iterator<T>      :- for forward traversing [ itr.hasNext(), itr.next() ]
+     2. ListIterator<T>  :- for both backward and forward  [ listIterator() , listIterator(pass the size here), itr.hasPrevious(), itr.previous()  ]
+     3. for loop
+     4. for each
+
+
+Q. how comparable & comparator works?
+-->
+ during comparing with compareTo(Object o) method:-
+
+if this is greater than given object then it is +ve and cannot be changed.
+
+if +ve then swap
+if -ve then keep it
+
+
+ if object is less    than current object(this) then it is -ve
+ if object is greater than current object(this) then it is +ve , sorting will be done here
+  if object same then 0
+
+comparator uses compare(Object o1,Object o2); method for comparision
+
+Q.terminal operators:-
+forEach();
+
+Q. lazy vs eager.
+-->
+Lazy Loading: Loads data only when accessed. Good for performance if you don't need all related data immediately.
+In Practice: When you load an object from the database, related data is not fetched until you specifically ask for it.
+For example, if you have a User with a list of Orders, the orders are fetched only when you try to access them.
+
+Eager Loading: Loads all related data upfront. Useful when you know you'll need the related data immediately but can lead to inefficiencies if not managed carefully.
+In Practice: When you load an object from the database, all its related data is fetched right away.
+             For example, if you load a User, their orders are fetched at the same time.
+
+Q. save vs saveAndFlush().
+-->
+save(): Saves the entity but does not immediately push changes to the database.
+saveAndFlush(): Saves the entity and immediately flushes changes to the database.
+
+save: Use it when you’re making multiple changes and you want to batch the database operations together for performance reasons. The actual database update happens only at the end of the transaction or when you explicitly flush the session.
+
+saveAndFlush: Use it when you need to ensure that the changes are immediately visible in the database. This is useful if you need to perform some operation that depends on the persisted state of the entity right away.
+
+
+Q.put vs patch.
+-->
+put :- Replaces the entire resource with the provided data. If any fields are missing, they are overwritten with null or default values.
+       entire object /entity
+
+patch:- Only updates specific fields of a resource. Fields not provided remain unchanged.
+        Used to partially update a resource.
+
+
+
+
+
+
+
+
+
+
+
+
+
+1)@Configuration :-
+@Configuration is an annotation that indicates that the class contains bean definitions,
+while @Bean is used to define specific beans.
+Configuration annotations simplify setup by allowing developers to define configuration
+can define more than one beans inside it.
+
+2)@ComponentScan:-
+@ComponentScan instructs Spring to scan specified packages for components,
+so they can be automatically managed by the Spring container.
+-->
+ is a Spring Framework annotation used to automatically detect and register beans (classes annotated with @Component, @Service, @Repository, etc.) in the application context.
+ It tells Spring where to look for components and configurations by specifying the base packages to scan.
+
+my==it scans only the current package under java package for creating beans
+                 if u define another package then there will be no springbootapplication class so componentscan
+                 cannot scan that class and not be able to create objects by springcontainer. :-.NoSuchBeanDefinitionException
+                 so define subpackage name inside @cs("package name") , now will create a bean
+
+
+
+
+
+3)@Bean:- diff. in component and bean
+inside bean we can define our object creation logic like how to create object for particular class
+but , in component bean is created automatically by spring container by using constructor
+
+
+
+
+4) @Qualifier is used to specify which bean to inject when multiple beans of the same type are available.
+ It helps resolve ambiguity by providing an additional identifier to distinguish between beans.
+
+
+suppose you have one interface with incomplete method inside it called as test() but it has 2 impl classes
+so while creating a bean it will give error like :-
+beans cannot be found due to multiple definations of one interface
+
+5)@RestController :- @ResponseBody & @Controller
+
+6)PropertySource :-
+annotation is used to provide properties file to Spring Environment.
+This annotation is used with @Configuration classes.
+Spring PropertySource annotation is repeatable, means you can have multiple PropertySource on a Configuration class.
+Errors :--- UnsatisfiedDependencyException, BeanCreationException
+for eg:- for twilio config sid,account number everything which is written in manual/my properties file then
+         to read the values inside config class we need to use this annotation
+         @PropertySource("classpath:my.properties")
+         so we can create as many as properties file as we want
+
+Q. if account_id field is declared in both app.properties and my.properties
+   then inside configuration class which properties id will it read out?
+-->
+it will definitely read app.properties only as it is default one even if we use annotation.
+
+
+7) @Transient :- field will not save it into the database
+
+8) @ConditionalOnProperty(name = "feature.enabled", havingValue = "true")
+It's often applied in configuration classes to conditionally create beans.
+is an annotation used in Spring Boot for conditional bean registration based on the presence or value of specific properties in the application’s configuration (like application.properties or application.yml).
+//can be used on configuration class, or with the bean methods
+
+9)@EntityListeners:-
+Eg. @EntityListeners(value = ItemListener.class)
+
+@PrePersist
+@PostPersist
+@PreUpdate
+@PostUpdate
+@PreRemove
+@PostRemove
+
+10)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

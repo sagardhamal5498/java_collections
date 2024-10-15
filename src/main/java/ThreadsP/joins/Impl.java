@@ -13,15 +13,15 @@ public class Impl {
         A a3 =new A("Hello 3");
         a3.setName("Thread 3");
 
-//        a1.start();
-//        a2.start();
-//        a3.start();
-
         a1.start();
-        a1.join();
         a2.start();
-        a2.join();
         a3.start();
-        a3.join();
+
+//        a1.start();
+//        a1.join();
+//        a2.start();
+//        a2.join();
+//        a3.start();
+//        a3.join();
     }
 }

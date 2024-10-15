@@ -4,3 +4,12 @@ java versions :- 1.1- 1.8 ,9,10,11,12....
 
 java 1.8 released date              :- march-2014
 collections framework first version :- 1.2
+
+sql:-
+
+when u try to delete particular id then it cant be deleted directly if there is foreign key used in other table
+
+so use "ON DELETE CASCADE" while using foreign key
+eg:- FOREIGN KEY (customer_id) REFERENCES customer(customer_id) ON DELETE CASCADE
+usage:- delete from customer where customer_id=1;
+it will delete that customer_id from customer as well as order table

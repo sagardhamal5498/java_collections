@@ -11,8 +11,8 @@ public class G {  //  Convert a string to title case (where the first letter of 
 
         String s="hello jio aa pociie" ;
 
-        List<String> collect = Arrays.stream(s.split(" ")).map(x -> Character.toUpperCase(x.charAt(0))+x.substring(1)).collect(Collectors.toList());
-        System.out.println(collect);
+//        List<String> collect = Arrays.stream(s.split(" ")).map(x -> Character.toUpperCase(x.charAt(0))+x.substring(1)).collect(Collectors.toList());
+//        System.out.println(collect);
 
 //        List<String> collect = Arrays.stream(s.split(" ")).map(x -> Character.toUpperCase(x.charAt(0)) + x.substring(1)).collect(Collectors.toList());
 //        System.out.println(collect);

@@ -5,9 +5,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class Hashset {
-
-
+public class HashSet2 {
 
     public static void main(String[] args) {
 
@@ -38,13 +36,13 @@ public class Hashset {
 
         System.out.println(set2);
 
-
         Set set3=new HashSet<>();
         set3.add(89);
         set3.add(11);
         set3.add(15);
         set3.add("jio");
 
+//        System.out.println(set3);
         System.out.println(set3);
     }
 }

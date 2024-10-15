@@ -1,7 +1,11 @@
 package PrajwalPrograms.flatmap;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
+import java.util.stream.DoubleStream;
+import java.util.stream.Stream;
 
 public class PP {
 
@@ -18,8 +22,18 @@ public class PP {
 //
 //            System.out.println(flatList);
 
-            List<Integer> collect = data.stream().flatMap(List::stream).collect(Collectors.toList());
-            System.out.println(collect);
+//            List<Integer> collect = data.stream().flatMap(List::stream).collect(Collectors.toList());
+//            System.out.println(collect);
+
+//            List<Integer> list = data.stream().flatMap(x -> x.stream()).toList();
+//            System.out.println(list);
+
+
+//            double multi[][] = { {1.0, 2.0}, {2.11, 204.00, 11.00, 34.00},{66.5,43.3,189.6}};
+//
+//            Arrays.stream(multi).flatMapToDouble(x->DoubleStream.of(x)).forEach(x-> System.out.println(x));
+//            System.out.println(array);
+
         }
     }
 

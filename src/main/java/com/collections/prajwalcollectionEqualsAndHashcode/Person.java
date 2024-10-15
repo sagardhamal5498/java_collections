@@ -1,4 +1,4 @@
-package com.collections.prajwalcollection;
+package com.collections.prajwalcollectionEqualsAndHashcode;
 
 public class Person {
 

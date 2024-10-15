@@ -14,6 +14,11 @@ Collections is a utility class in the java.util package.
  6.Manipulation slower            6.Manipulation is faster
  7.Searching is faster            7.Searching is slower
  8.less memory                    8.more memory
+ 9. TC:                           9. TC:
+ while searching:- O(1)              O(n)
+ while inserting/deleting operation :-
+                   O(n)              O(1)
+
 
 use Cases - ArrayList  - When there is infrequent transactions.
             LinkedList - When you have frequent insertions and deletions
@@ -46,7 +51,7 @@ Use Cases - HashSet -  Order of elements is not important.
       -ConcurrentHashMap is thread-safe. It is specifically designed to handle concurrent
        access by multiple threads.
       -ConcurrentHashMap may have slightly higher overhead compared to HashMap due to its thread safety features
-      -Concurrent  Hash Map does not allow null key and null values
+      -Concurrent Hash Map does not allow null key and null values
 
 
 Question - Try with Resource Block

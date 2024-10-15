@@ -13,7 +13,6 @@ vi) 3rd party API integration like whatsapp ,email,sms.
 -->
 admin, property manager,user, owner .
 
-
 Q1. how many members were there in your team?
 -->
 6 members :---------->
@@ -21,6 +20,14 @@ frontend  :- 2 members
 developers:- 2 developer
 project manager:- 1
 testing    :-1 member
+
++++++++
+
+in filter:-
+categories  :-dog friendly , apartment ,family friendly
+collections :-dog friendly, cool villas , group stays,deluxe
+wishlist    :- mark the favourites
+uploading images:- properties
 
 Q2.defect in project ?
 -->
@@ -91,5 +98,36 @@ eg:- one user can give multiple reviews so i used @OneToMany annotation , one pr
 ER diagrams were crucial in identifying the types of relationships (e.g., one-to-many, many-to-many)
 and deciding how they would be implemented in the database.
 
+Q. how to generate jwt token && also how to get username from given token in jwttokenservice class?
+--->
+//gen token
+public String generateToken(){
 
+    return JWT.create().withClaim(USERNAME,username).withExpiresAt(expiry).withIssuer(issuername).sign(algorithm);
+
+}
+
+//get username   //
+public String getusername(String token){
+	String uname =JWT.require(algo).withIssuer(issuer).build().verify(token).getClaim(USERNAME).asString();
+	return uname;
+}
+
+
+Q. aws config in properties.
+-->
+# AWS Access Key ID
+aws.accessKeyId=
+# AWS Secret Access Key
+aws.secretKey=
+# AWS Region
+aws.region=eu-north-1
+application.bucket.name=pvk123
+
+Q. twilio config
+-->
+twilio.account.sid=
+twilio.auth.token=
+twilio.phone.number=
+twilio.trial-number=
 

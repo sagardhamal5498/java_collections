@@ -9,14 +9,6 @@ public class A { //Find the Array Elements with the Most Vowels
 
     public static void main(String[] args) {
 
-        List<String> list = Arrays.asList("bale", "jock", "kalueo", "atty");
-
-//        List<Long> collect = list.stream().map(x -> x.chars().mapToObj(y -> y).filter(y -> y.equals('a') && y.equals('e') && y.equals('o') && y.equals('u') && y.equals('i')).count()).collect(Collectors.toList());
-//        System.out.println(collect);
-
-//        list.stream().map(x -> x.chars().mapToObj(y -> y).filter(y -> false).collect(Collectors.groupingBy(y -> y, Collectors.counting()))).collect(Collectors.toList());
-////        System.out.println(collectollect);
-
         String []aa={"bale", "jock", "kalueo", "atty"};
 
         int count=0;

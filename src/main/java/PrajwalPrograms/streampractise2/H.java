@@ -14,7 +14,7 @@ public class H { //
 //        List<List<Character>> collect = Arrays.stream(text.split(" ")).map(x -> x.chars().mapToObj(y -> (char) y).filter(y -> Character.isAlphabetic(y)).collect(Collectors.toList())).collect(Collectors.toList());
 //        System.out.println(collect);
 
-        String collect2 = text.chars().filter(x -> !Character.isDigit(x)).mapToObj(x -> String.valueOf((char) x)).collect(Collectors.joining(" "));
+        String collect2 = text.chars().filter(x -> !Character.isDigit(x)).mapToObj(x -> String.valueOf((char) x)).collect(Collectors.joining(""));
         System.out.println(collect2);
 
 //        Arrays.stream(text.split(" ")).map(x -> x.matches("[^0-9]")).collect(Collectors.toList());

@@ -1,14 +1,12 @@
 package com.collections.practise;
 
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Vector;
+import java.util.*;
 
 public class ListPractice {
 
     public static void main(String[] args) {
+
 
 //        List list=new ArrayList();
 

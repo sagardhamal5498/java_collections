@@ -2,7 +2,6 @@ package com.collections.comparable;
 
 public class Student implements Comparable<Student>{
 
-
     private int id;
     private String name;
     private int marks;
