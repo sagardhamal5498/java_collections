@@ -22,6 +22,7 @@ public class Impl {
         Collections.sort(data, new CompLogic());
         System.out.println(data);
 
+
          //sort by name
 //        Collections.sort(data, new CompLogic2());
 //        System.out.println(data);

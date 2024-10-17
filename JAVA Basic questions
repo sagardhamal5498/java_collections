@@ -19,7 +19,7 @@ iv)The JVM then executes the optimized code directly instead of interpreting it 
 Q2. what are classloader ?  LOAD(classes & interfaces) --> JVM
 -->
 Java Classloader is the program of JRE (Java Runtime Environment).
-The task of ClassLoader is to dynamically load the required Java classes and interfaces to the JVM during the execution of the bytecode.
+**The task of ClassLoader is to dynamically load the required Java classes and interfaces to the JVM during the execution of the bytecode.
 Because of classloaders, the Java run time system does not need to know about files and file systems.
 
 Q3. What is a Class Variable?
@@ -259,6 +259,12 @@ solution:-- we can iterate in so many ways like :-
 
 Q. how comparable & comparator works?
 -->
+comparable uses:- compareTo(T o1)
+comparator uses:- compare(T o1, T o2)
+
+only it should be -ve then it is perfectly sorted
+if +ve then it should be swapped
+
  during comparing with compareTo(Object o) method:-
 
 if this is greater than given object then it is +ve and cannot be changed.
@@ -276,7 +282,7 @@ comparator uses compare(Object o1,Object o2); method for comparision
 Q.terminal operators:-
 forEach();
 
-Q. lazy vs eager.
+Q. lazy vs eager. (travelpractise2)
 -->
 Lazy Loading: Loads data only when accessed. Good for performance if you don't need all related data immediately.
 In Practice: When you load an object from the database, related data is not fetched until you specifically ask for it.
@@ -303,15 +309,6 @@ put :- Replaces the entire resource with the provided data. If any fields are mi
 
 patch:- Only updates specific fields of a resource. Fields not provided remain unchanged.
         Used to partially update a resource.
-
-
-
-
-
-
-
-
-
 
 
 
@@ -388,7 +385,7 @@ Eg. @EntityListeners(value = ItemListener.class)
 @PreRemove
 @PostRemove
 
-10)
+
 
 
 
