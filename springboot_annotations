@@ -1,0 +1,23 @@
+
+A)
+@Column attributes :-->
+name,
+length,
+unique=true/false,
+nullable=true/false
+
+B)
+@GeneratedValue --> how primary key will be generated
+strategy = GenerationType.IDENTITY/AUTO/SEQUENCE/TABLE
+
+GenerationType.IDENTITY: Uses auto-increment in the database (common with MySQL, PostgreSQL).
+GenerationType.SEQUENCE: Uses a database sequence (common with Oracle).
+GenerationType.AUTO: The persistence provider will choose the appropriate strategy based on the database.
+GenerationType.TABLE: Uses a table to simulate a sequence.
+
+
+C)
+@JoinColumn -->
+The @JoinColumn annotation is used to specify the foreign key column for a relationship. This is typically used with @ManyToOne, @OneToOne, etc.
+
+
