@@ -101,7 +101,7 @@ and deciding how they would be implemented in the database.
 Q. how to generate jwt token && also how to get username from given token in jwttokenservice class?
 --->
 //gen token
-public String generateToken(){
+public String generateToken(String username){
 
     return JWT.create().withClaim(USERNAME,username).withExpiresAt(expiry).withIssuer(issuername).sign(algorithm);
 
@@ -112,6 +112,19 @@ public String getusername(String token){
 	String uname =JWT.require(algo).withIssuer(issuer).build().verify(token).getClaim(USERNAME).asString();
 	return uname;
 }
+
+Q.total dependencies added in your project .
+-->
+spring-boot-starter-data-jpa
+spring-boot-starter-security
+spring-boot-starter-web
+spring-boot-starter-validation
+spring-boot-starter-mail
+aws-java-sdk-s3
+java-jwt
+itextpdf
+lombok
+twilio
 
 Q. aws config in properties.
 -->
