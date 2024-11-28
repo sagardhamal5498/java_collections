@@ -11,9 +11,10 @@ public class EImp {  //Find the Word with the Highest Number of Vowels with & wi
 
         Arrays.stream(s1);
 
+        // BEST METHOD TILL NOW ---->
 //        String result = Arrays.stream(s1)
 //                .max(Comparator.comparingLong(x -> x.chars().mapToObj(y -> (char) y).filter(y -> "aeiouAEIOU".indexOf(y) != -1).count())).get();
-
+//
 //        System.out.println(result);
 
 

@@ -12,18 +12,18 @@ public class Person3 {
         this.age = age;
     }
 
-//    @Override
-//    public boolean equals(Object obj) {
-//        if (this == obj) return true;
-//        if (obj == null || getClass() != obj.getClass()) return false;
-//        Person3 person = (Person3) obj;
-//        return age == person.age && name.equals(person.name);
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(name, age);
-//    }
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Person3 person = (Person3) obj;
+        return age == person.age && name.equals(person.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, age);
+    }
 
     @Override
     public String toString() {

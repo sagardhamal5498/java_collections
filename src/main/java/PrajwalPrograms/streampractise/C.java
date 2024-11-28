@@ -11,10 +11,10 @@ public class C {  //Remove Duplicates and Sort Alphabetically
 
     public static void main(String[] args) {
 
-        List<String> words = Arrays.asList("apple", "banana", "apple", "cherry", "banana", "date");
+        List<String> words = Arrays.asList( "cherry","apple", "banana", "apple", "banana", "date");
 
-        List<String> collect = words.stream().sorted(Comparator.comparing(x -> x)).distinct().collect(Collectors.toList());
-        System.out.println(collect);
+//        List<String> collect = words.stream().sorted(Comparator.comparing(x -> x)).distinct().collect(Collectors.toList());
+//        System.out.println(collect);
 
 //        List<String> t1 = words.stream().distinct().sorted(Comparator.comparing(x -> x)).collect(Collectors.toList());
 //        System.out.println(t1);

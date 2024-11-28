@@ -11,9 +11,11 @@ public class Main {
 
         Map<Person, String> map = new HashMap<>();
         map.put(person1, "Alice's data");
-//        map.put(person2, "Alice's data");  //
+        map.put(person2, "Alice's data");  //
 
-        System.out.println(map.get(person2));
+        //below 2 should be true otherwise duplicate objects will be added
+        System.out.println(person1.hashCode()==person2.hashCode());
+        System.out.println(person1.equals(person2));
 
         // Trying to retrieve using an equivalent key
 //        String data = map.get(person2); // This will return null because person2 is not found

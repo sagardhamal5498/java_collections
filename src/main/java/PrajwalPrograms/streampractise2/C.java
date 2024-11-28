@@ -12,7 +12,5 @@ public class C { //Count the Frequency of Each Character in a String
         Map<Character, Long> collect = s.chars().mapToObj(x -> (char) x).filter(x->!x.equals(' ')).collect(Collectors.groupingBy(x -> x, Collectors.counting()));
         System.out.println(collect);
 
-
-
     }
 }

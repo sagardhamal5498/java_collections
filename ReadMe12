@@ -39,7 +39,7 @@ Q. methods of Hashtable /Hashmap.
     size()
     containsKey(key)
     containsValue(value)
-    hashcode
+    hashcode()
     isEmpty()
 
 Q. Default capacity and load factor of hashtable .

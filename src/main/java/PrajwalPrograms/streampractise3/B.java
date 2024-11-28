@@ -11,13 +11,26 @@ public class B {  //For each string in a list, use the Stream API to count the n
 
         List<String> data=Arrays.asList("hello","fellow");
 
-//        List<List<Map.Entry<Character, Long>>> collect =
-//                data.stream().map(x -> x.chars().mapToObj(y -> (char) y).collect(Collectors.groupingBy(y -> y, Collectors.counting())).entrySet().stream().filter(y -> y.getValue() == 1).collect(Collectors.toList()))
-//                .collect(Collectors.toList());
-//        System.out.println(collect);
+        List<List<Map.Entry<Character, Long>>> collect =
+                data.stream().map(x ->
+                        x.chars().mapToObj(y -> (char) y).collect(Collectors.groupingBy(y -> y, Collectors.counting()))
+                        .entrySet().stream().filter(y -> y.getValue() == 1).collect(Collectors.toList()))
+                .collect(Collectors.toList());
+        System.out.println(collect);
 
-        //xxxx
-//        Stream<Map<Character, Long>> mp = data.stream().map(x -> x.chars().mapToObj(y -> (char) y).collect(Collectors.groupingBy(y -> y, Collectors.counting())));
-//        System.out.println(mp);
+//---------------------------------------------------------------
+
+//        List<Long> result = data.stream().map(x -> {
+//
+//            long count = x.chars().mapToObj(y -> (char) y).collect(
+//                    Collectors.groupingBy(y -> y, Collectors.counting())
+//            ).entrySet().stream().filter(z -> z.getValue() == 1).count();
+//
+//            return count;
+//
+//        }).toList();
+//
+//        System.out.println(result);
+
     }
 }

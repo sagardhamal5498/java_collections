@@ -2,7 +2,7 @@ package ThreadsP.synchronization;
 
 import static ThreadsP.synchronization.Prac1.*;
 
-public class Prac1Impl{
+public class Prac1Impl{      //yeh toh mujhe nhi lagra sync ka example hain bcoz dono thread alag method ko call karre hain
 
     public static void main(String[] args) throws Exception{
 

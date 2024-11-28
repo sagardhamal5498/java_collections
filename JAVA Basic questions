@@ -1,4 +1,5 @@
 
+//for sorting in both direction :--> STREAMAPI -> sortList
 current version of java:-
 java 22
 
@@ -81,10 +82,12 @@ ii)supplier :
   Method :- get()
   usage  :- generate() ,findAny().orElseGet(supplier) ,findById(id).orElseThrow(),findById(id).orElseGet()
 iii)function :
-    Method:-- map(),flatMap(),Collectors.toMap(), Collectors.mapping()
+    Method:- Q apply(P p);
+    usage :- map(),flatMap(),Collectors.toMap(), Collectors.mapping()
     flatmap,... Transforms each element into a stream of new values and flattens these streams into a single stream.
 iv)Predicate:-
-   method:-  filter()
+   method:- boolean test(T t) ;
+   usage :-filter()
 
 Q.13 Date and Time apis in java difference before java 8 and after java 8.
 -->
@@ -182,18 +185,32 @@ With cloned objects, you can perform operations like modifying the state of the 
 
 Q24. why we override equals and hashcode methods.
 -->
-To avoid adding duplicate data
+To avoid adding duplicate data.
 
 What happens if we don't override hashCode()?
-If you don’t override hashCode(), even if two objects are "equal," they might not work correctly in collections like HashMap or HashSet. You could end up with duplicates or missing data.
+The default hashCode() also uses the object’s memory address to generate a hash. As a result, two objects with the same content will have different hash codes.
+This will cause problems when using hash-based collections like HashMap, HashSet, etc., because they rely on hashCode() for efficient retrieval.
 
 Why override equals()?
+the default equals() method checks only the memory address of both objects but after we override it will check their values only not address;
 We override equals() to check if two objects are the same based on their values, not just their memory address.
-
 
 Why override hashCode()?
 We override hashCode() so that objects that are considered equal by equals() have the same code and can work correctly in collections like HashMap or HashSet.
 if we dont do this then hashcode will be different for same object and will get stored in some other bucket.
+
+Q25. how to create immutable classes in java.
+-->
+steps ==>
+
+1. Declare the class as final: Prevents subclassing to maintain immutability.
+2. Make all fields private and final: Ensures fields cannot be modified after object creation.
+3. Initialize fields via a constructor: Sets the values at creation, ensuring they remain constant.
+4. Provide only getter methods (no setters): Allows access to field values without modifying them.
+
+5. Optionally, override toString(), equals(), and hashCode(): Enhances usability and comparison of instances.
+examples:-
+used in "String", "wrapper classes".
 
 Q.. current versions of springboot:-
 -->
@@ -222,8 +239,21 @@ Spring Boot 3.x -> Spring Framework 6.x.
 
 Q. difference between 2 vs 3 version of springboot?
 -->
+1. *Java Version*:
+   - Spring Boot 2 supports Java 8 and above.
+   - Spring Boot 3 requires Java 17 or above.
 
+2. *Jakarta EE Migration*:
+   - Spring Boot 3 moved to Jakarta EE 9, so javax.* packages are now jakarta.*.
 
+3. *Observability*:
+   - Spring Boot 3 introduces Micrometer Observation API, providing better observability for metrics and tracing.
+
+4. *Native Support*:
+   - Spring Boot 3 has built-in support for GraalVM Native Images, enabling native compilation for faster startup.
+
+5. *Removed Deprecated APIs*:
+   - Spring Boot 3 removed many deprecated APIs from Spring Boot 2, requiring code updates if they were used.
 
 Q. csrf and cors?
 CSRF (Cross-Site Request Forgery)
@@ -231,13 +261,19 @@ What it is: CSRF is an attack where a malicious website tricks a user into makin
 Example: Imagine you're logged into your bank's website. If you visit a malicious site, it could secretly send a request to your bank (using your logged-in session) to transfer money, without you realizing it.
 Why we disable it: In many APIs (especially stateless ones), we use tokens like JWT instead of relying on sessions, so CSRF isn't a big risk. That's why it's often disabled in APIs.
 CORS (Cross-Origin Resource Sharing)
-What it is: CORS is a security feature in web browsers that prevents websites from making requests to a different domain (or origin) unless the server allows it.
-Example: If your website (myapp.com) tries to make a request to another domain (like api.othersite.com), the browser checks if api.othersite.com allows requests from myapp.com. If not, the browser blocks the request.
+What it is: CORS is a security feature in web browsers that prevents other websites from making requests to a your domain (or origin) unless the server allows it.
+
+Example:-
+if other websites like "xyz.com" website sends request to your web app "travelbnb" ;
+you can decide whether xyz.com can access your website or it will block/notAllow that website , by adding the xyz.com in CORS.
+//now xyz can enter your website
+
 Why we disable it: In some cases, we may handle this restriction elsewhere, or we may want to allow requests from any origin, especially in APIs that are used by different front-end clients.
 In short:
 
 CSRF prevents malicious sites from tricking users into sending unwanted requests.
 CORS controls which websites can make requests to your server.
+
 
 Q. in how many ways we can iterate/traverse over any list,set,...?
 -->
@@ -279,8 +315,28 @@ if -ve then keep it
 
 comparator uses compare(Object o1,Object o2); method for comparision
 
-Q.terminal operators:-
-forEach();
+Q. Intermediate & terminal operations :-
+-->
+1) Intermediate Operations  :-->  [ filter(),map(),sorted(),limit(),skip(),distinct() ]
+Purpose: Transform or filter data; they return a new stream.
+Lazy Execution: They’re only executed when a terminal operation is called.
+Examples:
+* filter: Filters elements based on a condition.
+* map: Transforms each element in the stream.
+* sorted: Sorts elements in natural or custom order.
+* distinct: Removes duplicates.
+* limit / skip: Limits the stream to a subset of elements or skips a number of them.
+
+2) Terminal Operations    :---> [ forEach(), toList() ,collect(), anyMatch(), ... ]
+Purpose: End the stream pipeline, triggering execution.
+Eager Execution: Processes all previous intermediate operations.
+Examples:
+* forEach: Performs an action for each element.
+* collect: Gathers stream elements into a collection (e.g., List, Set).
+* reduce: Aggregates elements into a single result (e.g., sum, product).
+* count: Counts the number of elements.
+* anyMatch / allMatch / noneMatch: Checks conditions on elements.
+
 
 Q. lazy vs eager. (travelpractise2)
 -->
@@ -304,14 +360,70 @@ saveAndFlush: Use it when you need to ensure that the changes are immediately vi
 
 Q.put vs patch.
 -->
-put :- Replaces the entire resource with the provided data. If any fields are missing, they are overwritten with null or default values.
+put :- Replaces the entire resource with the provided data.
+       If any fields are missing, they are overwritten with null or default values.
        entire object /entity
 
 patch:- Only updates specific fields of a resource. Fields not provided remain unchanged.
         Used to partially update a resource.
 
+Q.singleton design pattern.
+-->
+Singleton Design Pattern ensures that a class has only one instance and provides a global access point to it.
+-only one object created and used everywhere in the whole project
 
+ simple example of the Singleton pattern in Spring Boot is the Spring Bean itself!
+ By default, Spring beans are singletons, which means Spring creates only one instance of each bean and reuses it throughout the application.
+**when you annotate a class with @Component, @Service, or @Repository, Spring will create just one instance of this class.
+**after creating it ; by using @autowired we can access single/same instance everywhere in project
 
+2 ways of creating singleton:-
+A)Lazy initialization.    || cons:- thread concurrency
+B)Eager initialization.   || cons:- if we dont use the object then also it automatically creates object in particular class at beginning only
+
+Q.Factory design pattern.
+-->
+The Factory Design Pattern is a way to create objects without specifying the exact class of object that will be made.
+It helps manage object creation in a more flexible and organized way.
+
+How It Works :--->
+- You define a factory that has a method for creating objects.
+- Depending on the input or conditions, the factory decides which specific class to instantiate.
+
+Benefits     : --->
+Decoupling : The code that uses the objects doesn’t need to know the details of how they’re created.
+Flexibility: You can easily add new types of objects without changing the existing code.
+
+eg:-
+ Employee emp1= new JavaDeveloper();
+ System.out.println("java salary   ::-" +emp1.getSalary());
+
+ Employee emp2= new PythonDeveloper();
+ System.out.println("python salary ::-" +emp2.getSalary());
+
+above is not best way for clients to manually create objects .
+
+BEST WAY-->
+Employee java= Factory.getEmpSalary("java developer");
+Employee pyt= Factory.getEmpSalary("python developer");
+
+Factory class is created and static Employee getEmpSalary(String domain) method is also there which will help to create object
+
+Q.how the .java file gets converted in java?
+-->
+Bytecode in Java is an intermediate representation of the source code and is designed to be platform-independent. It is not directly machine-readable by the hardware; instead, it needs to be interpreted or compiled into native machine code that the specific hardware can execute.
+
+Here's a clearer breakdown of the process:
+
+1. *Source Code to Bytecode*: When you compile your Java source code using a Java compiler (like javac), it generates bytecode in the form of .class files. This bytecode is platform-independent, meaning it can run on any device that has a Java Virtual Machine (JVM).
+
+2. *Bytecode to Machine Code*: The JVM is responsible for converting the bytecode into machine code. This is where the interpreter comes into play. The interpreter reads the bytecode and translates it into machine code that the underlying hardware can execute. This process happens at runtime.
+
+3. *Role of JIT Compiler*: The JIT compiler optimizes the execution process. It compiles frequently executed bytecode into native machine code, which improves performance by allowing the JVM to execute the optimized machine code directly instead of interpreting the bytecode each time.
+
+In summary, while bytecode is a step towards machine-readable code, it must still be processed by the JVM (either through interpretation or JIT compilation) to produce the actual machine code that the CPU can execute
+
+=========================================================================================================
 
 1)@Configuration :-
 @Configuration is an annotation that indicates that the class contains bean definitions,
@@ -332,20 +444,13 @@ my==it scans only the current package under java package for creating beans
                  so define subpackage name inside @cs("package name") , now will create a bean
 
 
-
-
-
 3)@Bean:- diff. in component and bean
 inside bean we can define our object creation logic like how to create object for particular class
 but , in component bean is created automatically by spring container by using constructor
 
-
-
-
 4) @Qualifier is used to specify which bean to inject when multiple beans of the same type are available.
  It helps resolve ambiguity by providing an additional identifier to distinguish between beans.
-
-
+eg:-
 suppose you have one interface with incomplete method inside it called as test() but it has 2 impl classes
 so while creating a bean it will give error like :-
 beans cannot be found due to multiple definations of one interface
@@ -366,7 +471,6 @@ Q. if account_id field is declared in both app.properties and my.properties
    then inside configuration class which properties id will it read out?
 -->
 it will definitely read app.properties only as it is default one even if we use annotation.
-
 
 7) @Transient :- field will not save it into the database
 

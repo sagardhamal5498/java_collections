@@ -7,7 +7,6 @@ public class F {  //sum of digits in a given string
 
     public static void main(String[] args) {
 
-
         String str="12sagar89dhamal";
 
         char[] ch = str.toCharArray();

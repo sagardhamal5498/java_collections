@@ -13,3 +13,41 @@ so use "ON DELETE CASCADE" while using foreign key
 eg:- FOREIGN KEY (customer_id) REFERENCES customer(customer_id) ON DELETE CASCADE
 usage:- delete from customer where customer_id=1;
 it will delete that customer_id from customer as well as order table
+
+----------------------------------------------
+Note:--->  For @Transactional  :-
+               @Transactional annotation is used to manage database transactions,
+               ensuring that certain operations are executed within a transaction.
+               if due to some reasons error happens afterwards then whole transaction will be rolled back
+
+Let me show you a small code example using @Transactional so it's easier to understand:
+
+### Without @Transactional:
+    If something fails, part of the data will still be saved in the database.
+
+java
+Copy code
+public void saveEmployeeData() {
+    employeeRepository.save(new Employee("John", "john@example.com")); // This is saved
+    // Simulate an error
+    throw new RuntimeException("Something went wrong!");
+    // The error happens here, but "John" is still saved in the database
+}
+
+
+### With @Transactional:
+    Now, if something fails, everything is rolled back — no data will be saved.
+
+code-->
+
+@Transactional  // This ensures rollback if something goes wrong
+public void saveEmployeeData() {
+    employeeRepository.save(new Employee("John", "john@example.com")); // This is saved
+    // Simulate an error
+    throw new RuntimeException("Something went wrong!");
+    // "John" will NOT be saved because everything gets rolled back
+}
+
+Explanation:
+In the first case, even though the error occurs, "John" will still be saved.
+In the second case with @Transactional, if there's an error, nothing is saved, keeping the database clean.

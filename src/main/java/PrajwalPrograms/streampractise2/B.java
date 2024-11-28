@@ -11,7 +11,7 @@ public class B {  //Sort Words in a String Alphabetically
 
         String s="kin god tow abbe cocin mango";
 
-        String collect = Arrays.stream(s.split(" ")).sorted(Comparator.comparing(x -> x)).collect(Collectors.joining(" "));
+        String collect = Arrays.stream(s.split(" ")).sorted().collect(Collectors.joining(" "));
         System.out.println(collect);
 
     }

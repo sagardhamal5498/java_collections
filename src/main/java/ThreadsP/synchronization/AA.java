@@ -6,6 +6,7 @@ public class AA {
 
     public synchronized static void increment(){   //will allow only one operation at a time
         count++;
+
     }
    //scenario if not used:--    count=200  t1 --> 201  t2 --> 201
 
@@ -29,6 +30,7 @@ public class AA {
         t1.start();
         t2.start();
 
+        // If no join, this may print 'count' before t1 and t2 finish; count will be printed as 0 if join is not used bcoz main thread will run first and print count
         try {
             t1.join();
             t2.join();

@@ -5,7 +5,6 @@ import java.util.stream.Collectors;
 
 public class F {  //
 
-
     public static void main(String[] args) {
 
         String str = "Replace the word 'word' with 'term' in this sentence";
