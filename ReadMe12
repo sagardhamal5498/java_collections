@@ -42,6 +42,20 @@ Q. methods of Hashtable /Hashmap.
     hashcode()
     isEmpty()
 
+Q. char vs varchar in mysql .
+-->
+char:-
+- Maximum size: 255 characters.
+-Fixed size.
+- If you say it should store 5 characters (CHAR(5)), it always uses space for 5 characters.
+  Example: If you save "Hi", it will store it as "Hi " (adds spaces).
+
+varchar:-
+- Maximum size: 65,535 bytes
+- Flexible size.
+- It only uses space for the actual text you save, plus a little extra to track its length.
+  Example: If you save "Hi" in VARCHAR(5), it stores just "Hi" (no extra spaces).
+
 Q. Default capacity and load factor of hashtable .
 -->
    default initial capacity (11) and load factor (0.75).
