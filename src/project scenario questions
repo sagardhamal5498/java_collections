@@ -101,7 +101,7 @@ and deciding how they would be implemented in the database.
 Q. how to generate jwt token && also how to get username from given token in jwttokenservice class?
 --->
 //gen token
-public String generateToken(){
+public String generateToken(String username){
 
     return JWT.create().withClaim(USERNAME,username).withExpiresAt(expiry).withIssuer(issuername).sign(algorithm);
 
@@ -113,6 +113,18 @@ public String getusername(String token){
 	return uname;
 }
 
+Q.total dependencies added in your project .
+-->
+spring-boot-starter-data-jpa
+spring-boot-starter-security
+spring-boot-starter-web
+spring-boot-starter-validation
+spring-boot-starter-mail
+aws-java-sdk-s3
+java-jwt
+itextpdf
+lombok
+twilio
 
 Q. aws config in properties.
 -->
@@ -131,3 +143,34 @@ twilio.auth.token=
 twilio.phone.number=
 twilio.trial-number=
 
+Q. optimistic locking explanation :
+-->
+* Optimistic locking is a concurrency control technique used in databases to prevent conflicts when multiple users try to update the same record simultaneously. 
+* Unlike pessimistic locking, which locks the record to prevent other transactions from accessing it, optimistic locking allows multiple transactions to proceed without locking the record.
+Example:
+In a hotel booking system, when two users try to book the same room, the first user’s transaction will succeed, while the second will fail due to a version mismatch, preventing data inconsistency.
+
+Scenario Explanation:
+User 1 enters the method to book the room. At this point, the room is not booked and the version is 0.
+User 2 simultaneously enters the method to book the same room. Both users see the room is available and the version is 0.
+Now, let's go step-by-step on what happens:
+
+Step-by-Step Process:
+User 1:
+
+User 1 reads the room and sees it's not booked (version is 0).
+User 1 clicks "book," which updates the room's isBooked status to true.
+The version number increments from 0 to 1.
+User 1’s booking goes through successfully because the version number was 0 when they read it.
+User 2 (Simultaneously):
+
+User 2 also reads the room and sees it’s not booked (version is 0).
+User 2 clicks "book" as well.
+Now, when User 2 tries to save the room, Spring checks the version. The version they read was 0, but User 1 has already updated it to 1.
+Spring detects a version conflict (because User 2 still has the old version 0) and throws an OptimisticLockingFailureException.
+User 2 gets the message: "Room booking failed due to a concurrent booking attempt. Please try again."
+To summarize:
+User 1 updates the room, incrementing the version from 0 to 1.
+User 2, upon attempting to book the room, finds that the version has changed (from 0 to 1), which triggers the optimistic locking failure, and User 2 receives the conflict message.
+So, the key point is that User 2 will not get the "Room is already booked" exception directly. Instead, they will get an OptimisticLockingFailureException, which occurs due to the version mismatch after User 1’s successful booking.
+This is how optimistic locking helps prevent race conditions and ensures data consistency without locking the database row, letting only one user book the room successfully.
