@@ -76,7 +76,7 @@ i) consumer :
   The Consumer functional interface in Java is a key part of the java.util.function package.
   It represents an operation that takes a single input argument and returns no result.
   Method :-- void accept(T t);
-  Usage  :-  forEach() ,peek()  ,,,peek method is often used for debugging purposes
+  Usage  :-  forEach() ,peek()  ,,,peek method is often used for debugging purposes/can use in middle of operations unlike foEach() which is terminal operator
 ii)supplier :
   It represents a supplier of results, meaning it can provide an output without needing any input.
   Method :- get()
