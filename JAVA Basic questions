@@ -3,6 +3,23 @@
 current version of java:-
 java 22
 
+Q.what is record?
+--> 
+
+- In Java, a record is a special type introduced in Java 16 to simplify creating immutable data objects.
+- It automatically provides constructor, getter methods, toString(), equals(), and hashCode().
+
+eg:- 
+
+record Person(String name, int age) {}
+
+public class Main {
+    public static void main(String[] args) {
+        Person person = new Person("John", 25);
+        System.out.println(person);
+    }
+}
+
 Q1. What do you mean by JIT?
 -->
 JIT stands for Just-in-Time compiler and is a part of JRE(Java Runtime Environment).
@@ -76,7 +93,7 @@ i) consumer :
   The Consumer functional interface in Java is a key part of the java.util.function package.
   It represents an operation that takes a single input argument and returns no result.
   Method :-- void accept(T t);
-  Usage  :-  forEach() ,peek()  ,,,peek method is often used for debugging purposes
+  Usage  :-  forEach() ,peek()  ,,,peek method is often used for debugging purposes/can use in middle of operations unlike foEach() which is terminal operator
 ii)supplier :
   It represents a supplier of results, meaning it can provide an output without needing any input.
   Method :- get()
