@@ -20,8 +20,8 @@ public class Impl {
 //        System.out.println(data);
 
 //        using comparator and sort by salary
-        Collections.sort(data, new CompLogic());
-        System.out.println(data);
+//        Collections.sort(data, new CompLogic());
+//        System.out.println(data);
 
 
          //sort by name

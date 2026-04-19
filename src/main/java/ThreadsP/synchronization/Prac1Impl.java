@@ -8,14 +8,20 @@ public class Prac1Impl{      //yeh toh mujhe nhi lagra sync ka example hain bcoz
 
         Thread tt=new Thread(()-> addBalance(9000));
         tt.start();
-        tt.join();
+
 
         Thread tt1=new Thread(()-> deductBalance(8000));
         tt1.start();
+
+        tt.join();
         tt1.join();
 
         System.out.println("main thread exe.");
         System.out.println("balance:-  " +balance);
+
+
+
+
 
     }
 

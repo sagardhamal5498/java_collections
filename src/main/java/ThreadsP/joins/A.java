@@ -2,7 +2,7 @@ package ThreadsP.joins;
 
 public class A extends Thread {
 
-    String str;
+    private String str;
 
     A(String str ){
         this.str=str;

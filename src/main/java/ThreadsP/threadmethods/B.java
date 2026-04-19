@@ -16,8 +16,9 @@ public class B extends Thread{
 
         B b1=new B();
 
-        Thread thread = Thread.currentThread();
-        System.out.println(thread.getName());
+//        Thread thread = Thread.currentThread();
+//        System.out.println(thread.getName());
+        System.out.println(Thread.currentThread().getName());
         b1.start();
 
 

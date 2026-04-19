@@ -126,7 +126,7 @@ import java.util.Date;
 Q15. methods in LocalDate?
 -->
  isLeapYear() ,isAfter(LocalDate other) ,isBefore(LocalDate other) ,of(int year, int month, int dayOfMonth) :creates instance of LocalDate
- plusDays(long daysToAdd) , minusDays(long daysToSubtract)
+ plusDays(long daysToAdd) , minusDays(long daysToSubtract), plusMonths( -//-), minusMonths( -//- )
 
 Q. where we need to use complete methods in interface?
 -->

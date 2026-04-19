@@ -10,7 +10,5 @@ public class Mainnn {
         c1.set("prajwal",90);
         c1.get();
 
-
-
     }
 }

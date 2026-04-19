@@ -11,7 +11,10 @@ public class F {  //
         String target = "word";
         String replacement = "term";
 
-        String collect = Arrays.stream(str.split(" ")).map(x -> x.replaceAll("word", "term")).collect(Collectors.joining(" "));
-        System.out.println(collect);
+//        String res = str.replaceAll("word", "term");
+//        System.out.println(res);
+
+//        String collect = Arrays.stream(str.split(" ")).map(x -> x.replaceAll("word", "term")).collect(Collectors.joining(" "));
+//        System.out.println(collect);
     }
 }

@@ -6,11 +6,10 @@ public class AA {
 
     public synchronized static void increment(){   //will allow only one operation at a time
         count++;
-
     }
    //scenario if not used:--    count=200  t1 --> 201  t2 --> 201
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
 
         Thread t1=new Thread( ()->{
 
@@ -25,6 +24,7 @@ public class AA {
             for(int i=0;i<1000;i++){
                 increment();
             }
+
         });
 
         t1.start();
@@ -37,6 +37,7 @@ public class AA {
         }catch (Exception e){
             e.printStackTrace();
         }
+        //mainly above join is used to main thread only to make them wait
 
         //it should print actually 2000 but concurrency takes place here without synchronized keyword!!
         System.out.println(count);

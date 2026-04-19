@@ -13,9 +13,13 @@ public class Impl {
         A a3 =new A("Hello 3");
         a3.setName("Thread 3");
 
+        //wrong way as it will parallely runs all threads
 //        a1.start();
 //        a2.start();
 //        a3.start();
+//        a1.join();
+//        a2.join();
+//        a3.join();
 
         a1.start();
         a1.join();
